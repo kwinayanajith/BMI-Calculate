@@ -73,6 +73,8 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI Calculator'),
+        leading: IconButton(icon: Icon(Icons.menu), onPressed: () {  },), // Add the leading icon here
+        actions: [Icon(Icons.notifications)],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

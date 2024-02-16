@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: Icon(Icons.menu,color: Colors.black54),
         title: Center(child: Text("BMI Calculator")),
       ),
       body: Column(
@@ -94,15 +95,15 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(color: Colors.white),
             ),
           ),
-          
-          
+
+
           TextButton(onPressed: () {
             double beduwamagana = userPostHeight/userPostWeight;
           }, child: Text("data")),
-          
+
           Text("Your bedima : }"),
 
-          
+
         ],
       ),
     );
