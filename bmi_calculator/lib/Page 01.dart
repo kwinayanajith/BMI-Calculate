@@ -67,9 +67,9 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
             child: Column(
               children: [
                 Text("${bmiResult.toStringAsFixed(2)}",style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 50,
-                  fontWeight: FontWeight.bold
+                    color: Colors.white,
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold
                 )),
                 SizedBox(height: 10),
                 Text(
@@ -136,13 +136,56 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
         backgroundColor: Color(0xFF0b0f34),
         title: Text('BMI Calculator', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400)),
         centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child: IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {},
-            color: Colors.white,
-          ),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child: IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer(); // Open the side menu
+                },
+                color: Colors.white,
+              ),
+            );
+          },
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF0b0f34),
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text('Home'),
+              onTap: () {
+                // Navigate to Home page or perform desired action
+              },
+            ),
+            ListTile(
+              title: Text('Contact Us'),
+              onTap: () {
+                // Navigate to Contact Us page or perform desired action
+              },
+            ),
+            ListTile(
+              title: Text('About'),
+              onTap: () {
+                // Navigate to About page or perform desired action
+              },
+            ),
+          ],
         ),
       ),
       body: Padding(
@@ -224,7 +267,12 @@ class _BMI_CalculatorState extends State<BMI_Calculator> {
                       SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
-                          // Handle "See More" button press
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SeeMorePage(bmiResult: bmiResult, bmiCategory: '',),
+                            ),
+                          );
                         },
                         child: Text("See More",style: TextStyle(
                           color: Colors.white,
